@@ -1,5 +1,39 @@
-const {chromium}=require('playwright');
-const fs=require('fs'),path=require('path'),{pathToFileURL}=require('url');
-(async()=>{const b=await chromium.launch({channel:'chrome',headless:true});const page=await b.newPage({reducedMotion:'reduce'});const root=path.resolve(__dirname,'..');const errors=[];page.on('pageerror',e=>errors.push(e.message));const problems=[];
-for(const width of [320,390,768,1024,1440]){await page.setViewportSize({width,height:850});for(const file of fs.readdirSync(root).filter(f=>f.endsWith('.html'))){await page.goto('http://127.0.0.1:8000/'+file);await page.evaluate(()=>document.fonts.ready);const issues=await page.evaluate(()=>{let bad=[];if(document.documentElement.scrollWidth>innerWidth+1)bad.push('overflow '+document.documentElement.scrollWidth);let els=[...document.querySelectorAll('.sitehead > .brand,.desktopnav,.nav-actions,.menuBtn')].filter(e=>e.offsetWidth).map(e=>e.getBoundingClientRect());for(let i=1;i<els.length;i++)if(els[i].left<els[i-1].right-1)bad.push('header overlap');return bad});if(issues.length)problems.push([width,file,issues])}}
-console.log(JSON.stringify({problems,errors:[...new Set(errors)]}));await b.close();if(problems.length||errors.length)process.exitCode=1})().catch(e=>{console.error(e.message);process.exit(1)});
+const { chromium } = require('playwright');
+const fs = require('node:fs');
+const path = require('node:path');
+
+async function run() {
+  const browser = await chromium.launch({channel: 'chrome', headless: true});
+  try {
+    const page = await browser.newPage({reducedMotion: 'reduce'});
+    const pages = fs.readdirSync(path.resolve(__dirname, '..')).filter(name => name.endsWith('.html'));
+    const issues = [];
+    page.on('pageerror', error => issues.push(error.message));
+    for (const width of [320, 390, 768, 1024, 1440]) {
+      await page.setViewportSize({width, height: 850});
+      for (const file of pages) {
+        await page.goto('http://127.0.0.1:8000/' + file);
+        await page.evaluate(() => document.fonts.ready);
+        const problems = await page.evaluate(() => {
+          const result = [];
+          if (document.documentElement.scrollWidth > innerWidth + 1) {
+            const outside = [...document.querySelectorAll('body *')].filter(e => {
+              return !e.closest('.sky-layer, svg') && e.getBoundingClientRect().right > innerWidth + 1;
+            }).slice(0, 8).map(e => e.tagName + '.' + e.className);
+            result.push('Horizontal overflow: ' + outside.join(', '));
+          }
+          const nav = [...document.querySelectorAll('.sitehead > .brand,.desktopnav,.nav-actions,.menuBtn')]
+            .filter(e => e.offsetWidth).map(e => e.getBoundingClientRect());
+          if (nav.some((r, i) => i && r.left < nav[i - 1].right - 1)) result.push('Overlapping header items');
+          return result;
+        });
+        issues.push(...problems.map(message => width + ' ' + file + ' ' + message));
+      }
+    }
+    if (issues.length) throw new Error(issues.join('\n'));
+    console.log(pages.length + ' pages passed at five viewport widths.');
+  } finally {
+    await browser.close();
+  }
+}
+run().catch(error => { console.error(error); process.exitCode = 1; });

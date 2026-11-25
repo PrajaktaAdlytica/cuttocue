@@ -85,3 +85,10 @@
   .playBtn:is(:hover,:focus-visible) .play-mark { transform: scale(1.18); }
   .button.dark:active, .book:active, .playBtn:active { transform: translateY(1px); }
 }
+@media (max-width: 360px) {
+  .sitehead { gap: 6px; padding-inline: 12px; }
+  .sitehead .brand img { width: 124px; }
+  .sitehead .signin { padding-inline: 8px; }
+  .footer { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 16px; }
+  .footer > div { min-width: 0; }
+}
