@@ -30,6 +30,19 @@ async function run() {
         issues.push(...problems.map(message => width + ' ' + file + ' ' + message));
       }
     }
+    await page.setViewportSize({width: 390, height: 844});
+    await page.goto('http://127.0.0.1:8000/index.html');
+    await page.getByRole('button', {name: 'Menu', exact: true}).click();
+    await page.locator('#mobilemenu a[href="cue-change-review.html"]').click();
+    await page.getByRole('link', {name: 'Inspect the fictional example'}).click();
+    await page.locator('#decide').click();
+    const download = page.waitForEvent('download');
+    await page.locator('#download').click();
+    const record = JSON.parse(fs.readFileSync(await (await download).path(), 'utf8'));
+    if (record.case_export_status !== 'held' || !record.blocking_cue_ids.includes('Q13')) {
+      issues.push('Missing credit should hold the example export');
+    }
+    await page.locator('#reset').click();
     if (issues.length) throw new Error(issues.join('\n'));
     console.log(pages.length + ' pages passed at five viewport widths.');
   } finally {

@@ -1,0 +1,208 @@
+{
+  "brand": "CueToCue",
+  "demo_label": "DEMO · SIMULATED DATA",
+  "example_only": true,
+  "record_type": "fictional_review_record",
+  "case_id": "NF104",
+  "episode_id": "North Ferry 104",
+  "old_cut": "07",
+  "new_cut": "08",
+  "timebase": {
+    "fps": 24,
+    "drop_frame": false,
+    "out_point": "exclusive"
+  },
+  "sources": [
+    {
+      "source_id": "PIC-104-07",
+      "type": "earlier picture",
+      "version": "07",
+      "date": "2026-11-03",
+      "permission_scope": "Fictional reference for local public walkthrough only"
+    },
+    {
+      "source_id": "SHEET-104-07",
+      "type": "approved sheet",
+      "version": "07",
+      "date": "2026-11-03",
+      "permission_scope": "Fictional reference for local public walkthrough only"
+    },
+    {
+      "source_id": "PIC-104-08",
+      "type": "later picture",
+      "version": "08",
+      "date": "2026-11-06",
+      "permission_scope": "Fictional reference for local public walkthrough only"
+    },
+    {
+      "source_id": "LIST-104-08",
+      "type": "editor music list",
+      "version": "08",
+      "date": "2026-11-06",
+      "permission_scope": "Fictional reference for local public walkthrough only"
+    },
+    {
+      "source_id": "CAT-12",
+      "type": "authorized demo catalog",
+      "version": "12",
+      "date": "2026-11-05",
+      "permission_scope": "Fictional reference for local public walkthrough only"
+    }
+  ],
+  "cues": [
+    {
+      "demo_label": "DEMO · SIMULATED DATA",
+      "cue_id": "Q11",
+      "title": "Harbor Steps",
+      "old": {
+        "timecode_in": "01:02:10:00",
+        "timecode_out_exclusive": "01:02:22:00",
+        "duration_frames": 288,
+        "duration_seconds": 12,
+        "recording_id": "R-021",
+        "work_id": "W-08",
+        "composer": "Oli Fern",
+        "publisher": "Brass Buoy Editions"
+      },
+      "new": {
+        "timecode_in": "01:02:14:00",
+        "timecode_out_exclusive": "01:02:26:00",
+        "duration_frames": 288,
+        "duration_seconds": 12,
+        "recording_id": "R-021",
+        "work_id": "W-08",
+        "composer": "Oli Fern",
+        "publisher": "Brass Buoy Editions"
+      },
+      "source_ids": [
+        "PIC-104-07",
+        "SHEET-104-07",
+        "PIC-104-08",
+        "LIST-104-08",
+        "CAT-12"
+      ],
+      "evidence_locator": "Q11",
+      "proposed_finding": "Entrance moves four seconds later",
+      "evidence_summary": "Both boundaries move 96 frames. Recording ID and duration match.",
+      "unresolved_gap": null,
+      "assignee": "Ren Vale",
+      "authorized_reviewer": "Ren Vale",
+      "decision": "Timing confirmed",
+      "decision_at": "2026-11-07",
+      "history": [
+        {
+          "actor": "Ren Vale",
+          "action": "Timing confirmed",
+          "date": "2026-11-07"
+        }
+      ],
+      "next_action": "None",
+      "cue_status": "eligible"
+    },
+    {
+      "demo_label": "DEMO · SIMULATED DATA",
+      "cue_id": "Q12",
+      "title": "Low Water",
+      "old": {
+        "timecode_in": "01:08:10:00",
+        "timecode_out_exclusive": "01:08:28:00",
+        "duration_frames": 432,
+        "duration_seconds": 18,
+        "recording_id": "R-044",
+        "work_id": "W-12",
+        "composer": "Ida Reed",
+        "publisher": "Brass Buoy Editions"
+      },
+      "new": {
+        "timecode_in": "01:08:10:00",
+        "timecode_out_exclusive": "01:08:21:00",
+        "duration_frames": 264,
+        "duration_seconds": 11,
+        "recording_id": "R-044",
+        "work_id": "W-12",
+        "composer": "Ida Reed",
+        "publisher": "Brass Buoy Editions"
+      },
+      "source_ids": [
+        "PIC-104-07",
+        "SHEET-104-07",
+        "PIC-104-08",
+        "LIST-104-08",
+        "CAT-12"
+      ],
+      "evidence_locator": "Q12",
+      "proposed_finding": "Same recording, earlier out-point",
+      "evidence_summary": "Identical entrance. Later picture and editor list agree on the new out-point, 168 frames earlier.",
+      "unresolved_gap": null,
+      "assignee": "Ren Vale",
+      "authorized_reviewer": "Ren Vale",
+      "decision": "Timing confirmed",
+      "decision_at": "2026-11-08",
+      "history": [
+        {
+          "actor": "Ren Vale",
+          "action": "Timing confirmed",
+          "date": "2026-11-08"
+        }
+      ],
+      "next_action": "None",
+      "cue_status": "eligible"
+    },
+    {
+      "demo_label": "DEMO · SIMULATED DATA",
+      "cue_id": "Q13",
+      "title": "The Glass Line",
+      "old": {
+        "timecode_in": "01:14:02:00",
+        "timecode_out_exclusive": "01:14:18:00",
+        "duration_frames": 384,
+        "duration_seconds": 16,
+        "recording_id": "R-090",
+        "work_id": "W-19",
+        "composer": "Lio Arden",
+        "publisher": "Salt Banner Music"
+      },
+      "new": {
+        "timecode_in": "01:14:02:00",
+        "timecode_out_exclusive": "01:14:18:00",
+        "duration_frames": 384,
+        "duration_seconds": 16,
+        "recording_id": "R-091",
+        "work_id": "W-19",
+        "composer": null,
+        "publisher": "Salt Banner Music"
+      },
+      "source_ids": [
+        "PIC-104-07",
+        "SHEET-104-07",
+        "PIC-104-08",
+        "LIST-104-08",
+        "CAT-12"
+      ],
+      "evidence_locator": "Q13",
+      "proposed_finding": "Full Mix replaced with Piano",
+      "evidence_summary": "The later list identifies R-091. The prior sheet cites R-090. CAT-12 lacks the required composer entry on the replacement.",
+      "unresolved_gap": "Composer missing for R-091 in CAT-12",
+      "assignee": "Eda Wynn",
+      "authorized_reviewer": "Ren Vale",
+      "decision": "Kept open for an authorized credit source",
+      "decision_at": "2026-11-07",
+      "history": [
+        {
+          "actor": "Ren Vale",
+          "action": "Kept open for an authorized credit source",
+          "date": "2026-11-07"
+        }
+      ],
+      "next_action": "Obtain approved composer entry for R-091",
+      "cue_status": "held"
+    }
+  ],
+  "case_export_status": "held",
+  "blocking_cue_ids": [
+    "Q13"
+  ],
+  "approval_actor": null,
+  "approval_time": null,
+  "submitted": false
+}
