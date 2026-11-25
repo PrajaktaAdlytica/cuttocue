@@ -1,0 +1,71 @@
+.hero .plate {
+  inset: -9% -5%;
+  background-image: url(dawn-passage.webp);
+  background-position: 54% 52%;
+  animation: none;
+}
+.hero:after {
+  background: linear-gradient(90deg, #f2f6fbac, #fff5 33%, transparent 65%),
+              linear-gradient(0deg, #fcf6fa9c, transparent 19%);
+}
+.hero .title { line-height: .98; }
+.title-line { display: block; overflow: clip; padding: .09em .08em .13em 0; margin: -.09em 0 -.13em; }
+.title-line > * { display: inline-block; }
+.hero .sky-score { animation: none; }
+.aperture { position: absolute; inset: 0; z-index: 3; pointer-events: none; overflow: hidden; }
+.aperture::before, .aperture::after {
+  content: ''; position: absolute; left: 0; right: 0; height: 11%; background: #121824; transform: scaleY(0);
+}
+.aperture::before { top: 0; transform-origin: top; }
+.aperture::after { bottom: 0; transform-origin: bottom; }
+@media (prefers-reduced-motion: no-preference) {
+  .opening-shot .aperture::before, .opening-shot .aperture::after {
+    animation: shutter-open 1.05s cubic-bezier(.24,.82,.25,1) both;
+  }
+  @keyframes shutter-open { from { transform: scaleY(1); } to { transform: scaleY(0); } }
+}
+body:not(:has(> .hero)) main > section:first-child {
+  position: relative; isolation: isolate;
+}
+body:not(:has(> .hero)) main > section:first-child::after {
+  content: ''; position: absolute; inset: 0; z-index: -2; pointer-events: none;
+  background:
+    linear-gradient(100deg, #fff 8%, rgb(255 255 255 / .93) 36%, rgb(255 255 255 / .35)),
+    url(dawn-passage.webp) center var(--horizon, 54%) / cover;
+}
+body:is([data-page="credit-check"],[data-page="cue-sheet-export"],[data-page="pricing"]) main > section:first-child::after {
+  background-image: linear-gradient(105deg, #fff 6%, #fff9f6ed 40%, #fdf0f499), url(cloud-score.webp);
+}
+body:is([data-page="pilot"],[data-page="request-demo"],[data-page="contact"],[data-page="privacy"],[data-page="terms"]) main > section:first-child::after {
+  background-image: linear-gradient(105deg, #fff 12%, #f6fafff5 41%, #e6edfaf0), url(dawn-passage.webp);
+}
+.scene-progress {
+  display: block; position: absolute; pointer-events: none; left: 0; right: 0; bottom: -1px;
+  height: 2px; background: linear-gradient(90deg,#7185ad,#c19bba 70%,#c99c61);
+  transform-origin: left; transform: scaleX(0);
+}
+.page .visual { position: relative; }
+.page .visual::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(105deg, transparent 37%, #ffffff14 48%, #ffffff30 49%, transparent 59%);
+  transform: translateX(var(--scan, 108%));
+}
+.final { overflow: clip; }
+.final::before { inset: -3% 0; transform: translateY(var(--night-shift, 0%)); }
+@media (max-width: 720px) {
+  .hero .plate { background-position: 62% 50%; }
+  .hero:after { background: linear-gradient(0deg,#ffffff88 0%,#ffffffe0 36%,#ffffff99 60%,transparent 86%); }
+  .aperture::before,.aperture::after { height: 6%; }
+}
+@media (prefers-reduced-motion: reduce) { .scene-progress, .aperture { display: none; } }
+.picture-dissolve {
+  position: absolute; inset: 0; z-index: -3; pointer-events: none;
+  background: linear-gradient(90deg, #f7f5efdb, #f7f5ef72 45%, transparent 80%),
+              url(north-ferry.webp) center 62% / cover;
+  clip-path: inset(0 0 0 100%); opacity: 0;
+}
+.formbox {
+  background-image: linear-gradient(100deg, #93a9cf, #d5aebc 70%, #caa366);
+  background-repeat: no-repeat; background-position: left top;
+  background-size: var(--form-rule, 100%) 2px;
+}

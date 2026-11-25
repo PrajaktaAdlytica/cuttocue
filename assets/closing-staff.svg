@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 340" fill="none">
+  <defs>
+    <path id="phrase" d="M-10 257C92 242 155 144 266 155S443 251 518 162 597 53 699 68"/>
+    <linearGradient id="ink">
+      <stop stop-color="#e5d7fd" stop-opacity="0"/>
+      <stop offset=".23" stop-color="#e5d7fd" stop-opacity=".64"/>
+      <stop offset=".88" stop-color="#f7dfeb" stop-opacity=".73"/>
+      <stop offset="1" stop-color="#f7dfeb" stop-opacity=".16"/>
+    </linearGradient>
+  </defs>
+  <g stroke="url(#ink)" stroke-width="1">
+    <use href="#phrase" y="-12"/><use href="#phrase" y="-6"/><use href="#phrase"/>
+    <use href="#phrase" y="6"/><use href="#phrase" y="12"/>
+  </g>
+</svg>
